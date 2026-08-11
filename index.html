@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0911" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="CRM Dashboard — intelligent Excel-to-CRM analytics in your browser." />
+  <title>CRM Dashboard</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <section id="landingView" class="landing-view" aria-labelledby="landingTitle">
+    <div class="landing-orb landing-orb-a" aria-hidden="true"></div>
+    <div class="landing-orb landing-orb-b" aria-hidden="true"></div>
+    <header class="landing-header shell-width">
+      <a class="brand" href="#" aria-label="CRM Dashboard home">
+        <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="CRM Dashboard logo">
+          <defs>
+            <linearGradient id="brandGradient" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#9A78FF"/>
+              <stop offset="1" stop-color="#FF846D"/>
+            </linearGradient>
+          </defs>
+          <rect x="5" y="5" width="38" height="38" rx="12" fill="#171320" stroke="#2D2638"/>
+          <circle cx="17" cy="18" r="4" fill="url(#brandGradient)"/>
+          <circle cx="31" cy="15" r="3" fill="#F1B15D"/>
+          <circle cx="31" cy="32" r="4" fill="#BBA7FF"/>
+          <path d="M20.4 18.1 28 15.7M19.5 21.2l8.4 8.1M31 18v10" stroke="#EEEAF5" stroke-width="2.4" stroke-linecap="round" opacity=".92"/>
+        </svg>
+        <span class="brand-copy"><strong>CRM</strong><span>Dashboard</span></span>
+      </a>
+      <div class="privacy-pill"><span class="privacy-dot"></span>Your data stays in your browser</div>
+    </header>
+
+    <main id="main-content" class="landing-main shell-width">
+      <div class="landing-copy">
+        <div class="eyebrow">Excel → CRM Analytics</div>
+        <h1 id="landingTitle">Turn your CRM Excel data into <span>clear decisions.</span></h1>
+        <p>Upload your Excel report and instantly explore customers, representatives, visits, opportunities, activity, data quality and hidden patterns—without sending your data anywhere.</p>
+
+        <div class="upload-card" id="uploadCard">
+          <input id="fileInput" type="file" accept=".xlsx,.xls" hidden />
+          <button id="dropZone" class="drop-zone" type="button" aria-describedby="uploadHelp">
+            <span class="file-glyph" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M11 4h11l7 7v25H11z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22 4v8h8M15 25h10M15 20h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="drop-title">Drop your Excel workbook here</span>
+            <span class="drop-subtitle">or click to browse</span>
+            <span id="uploadHelp" class="format-chip">XLSX · XLS · processed locally</span>
+          </button>
+          <div id="selectedFile" class="selected-file" hidden>
+            <div class="selected-file-main">
+              <span class="file-mini">XL</span>
+              <div><strong id="selectedFileName"></strong><span id="selectedFileMeta"></span></div>
+            </div>
+            <div class="selected-file-actions">
+              <button id="changeFileBtn" class="btn btn-ghost" type="button">Change</button>
+              <button id="analyzeBtn" class="btn btn-primary" type="button">Analyze Dataset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="preview-stage" aria-hidden="true">
+        <div class="preview-window">
+          <div class="preview-topbar"><span></span><span></span><span></span><b>Live CRM signal</b></div>
+          <div class="preview-kpis">
+            <article><span>Visits</span><strong>1,248</strong><em>+12.4%</em></article>
+            <article><span>Potential</span><strong>482K</strong><em>68 valued</em></article>
+          </div>
+          <div class="preview-chart">
+            <div class="chart-caption"><span>Activity trend</span><b>Last 30 days</b></div>
+            <svg viewBox="0 0 520 190" preserveAspectRatio="none">
+              <defs><linearGradient id="areaGlow" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9A78FF" stop-opacity=".35"/><stop offset="1" stop-color="#9A78FF" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 148 C46 132 54 92 102 108 S167 133 214 88 294 50 340 74 397 123 450 73 492 52 520 58 V190 H0Z" fill="url(#areaGlow)"/>
+              <path d="M0 148 C46 132 54 92 102 108 S167 133 214 88 294 50 340 74 397 123 450 73 492 52 520 58" fill="none" stroke="#A489FF" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="340" cy="74" r="6" fill="#FF846D" stroke="#171320" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="preview-list">
+            <div><span class="avatar-dot">AM</span><p><b>Activity</b><small>Visit completed · 8 min ago</small></p><strong>Amman</strong></div>
+            <div><span class="avatar-dot warm">SR</span><p><b>Opportunity</b><small>Expected amount captured</small></p><strong>24.5K</strong></div>
+            <div><span class="avatar-dot amber">NC</span><p><b>Customer</b><small>Repeat interaction identified</small></p><strong>3 visits</strong></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </section>
+
+  <section id="loaderView" class="loader-view" hidden aria-live="polite" aria-busy="true">
+    <div class="loader-core" aria-hidden="true">
+      <div class="loader-node n1"></div><div class="loader-node n2"></div><div class="loader-node n3"></div>
+      <div class="loader-rail r1"></div><div class="loader-rail r2"></div><div class="loader-rail r3"></div>
+    </div>
+    <div class="loader-copy"><div class="eyebrow">CRM Dashboard</div><h2 id="loaderStatus">Reading workbook</h2><p id="loaderDetail">Preparing a secure local analysis.</p><div class="loader-progress"><span id="loaderProgress"></span></div></div>
+  </section>
+
+  <div id="appShell" class="app-shell" hidden>
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <a class="brand" href="#overview" aria-label="CRM Dashboard"><svg class="brand-mark" viewBox="0 0 48 48"><rect x="5" y="5" width="38" height="38" rx="12" fill="#171320" stroke="#2D2638"/><circle cx="17" cy="18" r="4" fill="#9A78FF"/><circle cx="31" cy="15" r="3" fill="#F1B15D"/><circle cx="31" cy="32" r="4" fill="#FF846D"/><path d="M20.4 18.1 28 15.7M19.5 21.2l8.4 8.1M31 18v10" stroke="#EEEAF5" stroke-width="2.4" stroke-linecap="round"/></svg><span class="brand-copy"><strong>CRM</strong><span>Dashboard</span></span></a>
+        <button id="collapseSidebarBtn" class="icon-btn sidebar-collapse" type="button" aria-label="Collapse sidebar">‹</button>
+      </div>
+      <nav id="sideNav" class="side-nav" aria-label="Dashboard sections"></nav>
+      <div class="sidebar-foot"><span class="privacy-dot"></span><div><strong>Local processing</strong><small>Your workbook never leaves this browser.</small></div></div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="mobileMenuBtn" class="icon-btn mobile-only" type="button" aria-label="Open navigation">☰</button>
+          <div><span class="topbar-kicker">Dataset</span><h2 id="datasetName">—</h2></div>
+          <span id="recordBadge" class="record-badge">0 records</span>
+        </div>
+        <div class="topbar-actions">
+          <button id="globalSearchBtn" class="search-trigger" type="button"><span>⌕</span><span>Search records</span><kbd>/</kbd></button>
+          <button id="openFiltersBtn" class="btn btn-secondary" type="button"><span>Filters</span><b id="filterCountBadge">0</b></button>
+          <button id="replaceDatasetBtn" class="btn btn-primary" type="button">Replace Dataset</button>
+        </div>
+      </header>
+
+      <div id="activeFilterBar" class="active-filter-bar" hidden>
+        <div class="filter-context"><strong id="resultCountText">0 Records</strong><span id="activeChips" class="active-chips"></span></div>
+        <button id="clearAllBtn" class="link-btn" type="button">Clear all</button>
+      </div>
+
+      <main id="dashboardMain" class="dashboard-main">
+        <section id="overviewSection" class="dashboard-section" data-section="overview">
+          <div class="page-heading"><div><span class="eyebrow">Overview</span><h1>CRM performance at a glance</h1><p id="overviewSubtitle">Dynamic analytics generated from your workbook.</p></div><div class="heading-actions"><button id="exportFilteredBtn" class="btn btn-secondary" type="button">Export Filtered CSV</button><button id="configureFieldsBtn" class="btn btn-secondary" type="button">Data Fields</button></div></div>
+          <div id="kpiGrid" class="kpi-grid"></div>
+          <div id="insightsGrid" class="insights-grid"></div>
+          <div id="chartGrid" class="chart-grid"></div>
+        </section>
+
+        <section id="activitySection" class="dashboard-section" data-section="activity" hidden><div class="section-heading"><div><span class="eyebrow">Activity</span><h2>Visit & activity intelligence</h2></div></div><div id="activityContent"></div></section>
+        <section id="representativesSection" class="dashboard-section" data-section="representatives" hidden><div class="section-heading"><div><span class="eyebrow">Representatives</span><h2>Representative activity metrics</h2></div></div><div id="representativesContent"></div></section>
+        <section id="customersSection" class="dashboard-section" data-section="customers" hidden><div class="section-heading"><div><span class="eyebrow">Customers</span><h2>Customer interaction insights</h2></div></div><div id="customersContent"></div></section>
+        <section id="opportunitiesSection" class="dashboard-section" data-section="opportunities" hidden><div class="section-heading"><div><span class="eyebrow">Opportunity Analytics</span><h2>Expected amount & potential</h2></div></div><div id="opportunitiesContent"></div></section>
+        <section id="locationsSection" class="dashboard-section" data-section="locations" hidden><div class="section-heading"><div><span class="eyebrow">Locations</span><h2>Geographic activity distribution</h2></div></div><div id="locationsContent"></div></section>
+        <section id="qualitySection" class="dashboard-section" data-section="quality" hidden><div class="section-heading"><div><span class="eyebrow">Data Quality</span><h2>Workbook completeness & structure</h2></div></div><div id="qualityContent"></div></section>
+        <section id="explorerSection" class="dashboard-section" data-section="explorer" hidden><div class="section-heading explorer-heading"><div><span class="eyebrow">Data Explorer</span><h2>Filtered records</h2></div><div class="heading-actions"><button id="columnSelectorBtn" class="btn btn-secondary" type="button">Columns</button><button id="exportTableBtn" class="btn btn-secondary" type="button">Export Visible CSV</button></div></div><div id="dataExplorer"></div></section>
+
+        <section class="academy-banner" aria-label="X Academy services">
+          <div><span class="academy-kicker">X Academy</span><h2>Need a dashboard like this for your business?</h2><p>Custom Dashboards <span>•</span> Excel Automation <span>•</span> Power BI <span>•</span> Web Applications</p><strong>Learn. Analyse. Lead.</strong></div>
+          <button id="academyCta" class="academy-cta" type="button">Build Your Dashboard <span>↗</span></button>
+        </section>
+      </main>
+
+      <footer class="app-footer"><span>CRM Dashboard</span><span>Powered by X Academy — Learn. Analyse. Lead.</span></footer>
+    </div>
+  </div>
+
+  <div id="sheetModal" class="modal-backdrop" hidden><section class="modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="sheetModalTitle"><div class="modal-head"><div><span class="eyebrow">Workbook</span><h2 id="sheetModalTitle">Choose a worksheet</h2></div><button class="icon-btn" data-close-modal="sheetModal" type="button" aria-label="Close">×</button></div><div id="sheetList" class="sheet-list"></div></section></div>
+
+  <div id="filterDrawer" class="drawer-backdrop" hidden><aside class="filter-drawer" role="dialog" aria-modal="true" aria-labelledby="filterDrawerTitle"><div class="drawer-head"><div><span class="eyebrow">Smart Filters</span><h2 id="filterDrawerTitle">Refine dashboard</h2></div><button id="closeFiltersBtn" class="icon-btn" type="button" aria-label="Close filters">×</button></div><div id="datePresets" class="date-presets"></div><div id="filterControls" class="filter-controls"></div><div class="drawer-foot"><button id="drawerClearBtn" class="btn btn-secondary" type="button">Clear all</button><button id="drawerDoneBtn" class="btn btn-primary" type="button">View results</button></div></aside></div>
+
+  <div id="detailDrawerBackdrop" class="drawer-backdrop" hidden><aside id="detailDrawer" class="detail-drawer" role="dialog" aria-modal="true" aria-labelledby="detailDrawerTitle"><div class="drawer-head"><div><span class="eyebrow">Record Details</span><h2 id="detailDrawerTitle">CRM record</h2></div><button id="closeDetailBtn" class="icon-btn" type="button" aria-label="Close details">×</button></div><div id="detailContent" class="detail-content"></div></aside></div>
+
+  <div id="fieldsModal" class="modal-backdrop" hidden><section class="modal fields-modal" role="dialog" aria-modal="true" aria-labelledby="fieldsModalTitle"><div class="modal-head"><div><span class="eyebrow">Semantic Mapping</span><h2 id="fieldsModalTitle">Data Fields</h2><p>Review or override the fields detected automatically.</p></div><button class="icon-btn" data-close-modal="fieldsModal" type="button" aria-label="Close">×</button></div><div id="fieldMappings" class="field-mappings"></div><div class="modal-foot"><button class="btn btn-secondary" data-close-modal="fieldsModal" type="button">Cancel</button><button id="saveMappingsBtn" class="btn btn-primary" type="button">Apply mappings</button></div></section></div>
+
+  <div id="searchModal" class="modal-backdrop" hidden><section class="modal search-modal" role="dialog" aria-modal="true" aria-labelledby="searchTitle"><div class="search-box"><span>⌕</span><input id="globalSearchInput" type="search" autocomplete="off" placeholder="Search customers, reps, notes, products..." aria-labelledby="searchTitle"/><kbd>Esc</kbd></div><div id="searchTitle" class="sr-only">Global search</div><div id="searchPreview" class="search-preview"></div></section></div>
+
+  <div id="columnModal" class="modal-backdrop" hidden><section class="modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="columnModalTitle"><div class="modal-head"><div><span class="eyebrow">Data Explorer</span><h2 id="columnModalTitle">Visible columns</h2></div><button class="icon-btn" data-close-modal="columnModal" type="button" aria-label="Close">×</button></div><div id="columnChecklist" class="column-checklist"></div></section></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/excel-parser.js" defer></script>
+  <script src="js/data-profiler.js" defer></script>
+  <script src="js/filter-engine.js" defer></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/table.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
